@@ -14,7 +14,7 @@ function bt2() {
 }
 
 function bt3() {
-    var data = getElementById("input3").value;
+    var data = document.getElementById("input3").value;
     var A = data.split("");
     var check = 1;
     for (var i = 0; i < A.length - 1; i++) {
@@ -22,7 +22,7 @@ function bt3() {
             check = 1;
         else {
             check = 0;
-            document.getElementById("result3").innerHTML = 'Chuoi giam.';
+            document.getElementById("result3").innerHTML = 'Chuoi khong tang.';
             break;
         }
     }
@@ -30,20 +30,22 @@ function bt3() {
 }
 
 function bt4() {
-    var data = getElementById("input4").value;
-    var A = data.split(" ");
+    var data = document.getElementById("input4").value;
     var newData = "";
-    for (var i = 0; i < A.length; i++)
+    for (var i = 0; i < data.length; i++)
         newData += String.fromCharCode(data.charCodeAt(i) + 1);
     document.getElementById("result4").innerHTML = newData;
 }
 
 function bt5() {
-    var data = getElementById("input5").value;
-    var A = data.split(" ");
-    var mid = (A.length - 1)/2;
-    document.getElementById("result5").innerHTML = A.substr(mid - 1, mid + 1);
+    var data = document.getElementById("input5").value;
+    var mid = (data.length - 1)/2;
+    var A = "";
+    A = data.substr(mid - 1, 3);
+    document.getElementById("result5").innerHTML = A;
 }
+// for (var i = 0; i < length; i++)
+//     A += data.charAt(Math.floor(Math.random() * data.length));
 
 function bt6() {
     var data = document.getElementById("input6").value;
@@ -51,20 +53,19 @@ function bt6() {
     var count = 0, max = 1;
     var maxCount = A[0];
     for (var i = 0; i < A.length - 1; i++) {
-        for (var j = i; j < A.length; j++) {
-            if (A[i] == A[j])
-                count++;
-        }
-        if (count >= max) {
-            max = count;
-            maxCount = data[i]
+        if (A[i] == A[i+1]) {
+            count++;
+            if (count >= max) {
+                max = count;
+                maxCount = A[i];
+            }
         }
     }
     document.getElementById("result6").innerHTML = " Số xuất hiện nhiều nhất là : " + maxCount;
 }
 
 function bt7() {
-    var data = getElementById("input7").value;
+    var data = document.getElementById("input7").value;
     // var A = data.split(" ");
     if (data.indexOf('java') == -1)
         document.getElementById("result7").innerHTML = ('Chuoi khong chua "java"');
@@ -73,12 +74,12 @@ function bt7() {
 }
 
 function bt8() {
-    var data = getElementById("input8").value;
+    var data = document.getElementById("input8").value;
     var avaiData = ['Tháng một', 'Tháng hai', 'Tháng ba', 'Tháng tư', 'Tháng năm', 'Tháng sáu',
         'Tháng bảy', 'Tháng tám', 'Tháng chín', 'Tháng mười', 'Tháng mười một', 'Tháng mười hai'
     ]
-    for (var i = 0; i < length.avaiData; i++) {
-        if (i == data - 1)
+    for (var i = 0; i < avaiData.length; i++) {
+        if (data == i+1)
             document.getElementById("result8").innerHTML = avaiData[i];
     }
 }
